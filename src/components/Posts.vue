@@ -1,6 +1,7 @@
 <script setup>
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const posts = ref([]);
 
@@ -21,6 +22,10 @@ onMounted(() => {
 <template>
     <h1>All Post</h1>
 
+    <RouterLink :to="`/posts/create`" class="btn btn-green">
+        Add Post
+    </RouterLink>
+
     <table id="posts">
         <tr>
             <th>S.N</th>
@@ -34,7 +39,12 @@ onMounted(() => {
             <td>{{ post.title }}</td>
 
             <td>
-                <button class="btn btn-green">O</button>
+                <RouterLink
+                   :to="`/posts/view/${post.id}`"
+                   class="btn btn-green"
+                >
+                   O
+                </RouterLink>
                 <button class="btn btn-blue">/</button>
                 <button class="btn btn-red">X</button>
             </td>
