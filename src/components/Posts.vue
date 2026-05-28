@@ -14,6 +14,17 @@ const getPosts = async () => {
     }
 }
 
+const deletePost = async (id) => {
+    try {
+        await axios.delete(`http://localhost:8080/posts/${id}`);
+
+        getPosts();
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 onMounted(() => {
     getPosts();
 });
@@ -51,7 +62,12 @@ onMounted(() => {
                 >
                     /
                 </RouterLink>
-                <button class="btn btn-red">X</button>
+                <button
+                    @click="deletePost(post.id)"
+                    class="btn btn-red"
+                >
+                    X
+                </button>
             </td>
         </tr>
     </table>
