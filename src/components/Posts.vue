@@ -45,7 +45,12 @@ onMounted(() => {
                 >
                    O
                 </RouterLink>
-                <button class="btn btn-blue">/</button>
+                <RouterLink
+                    :to="`/posts/edit/${post.id}`"
+                    class="btn btn-blue"
+                >
+                    /
+                </RouterLink>
                 <button class="btn btn-red">X</button>
             </td>
         </tr>
